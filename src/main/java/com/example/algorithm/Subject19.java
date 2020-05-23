@@ -20,13 +20,6 @@ public class Subject19 {
         removeNthFromEnd(list1,2);
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     //怎么理解：
     // 1,2,3,4,5 倒数第二个（2），应该是3,5，去除4，倘若判断5.next!=null，那就移动5-3=2（和倒数2相比），就应该是i=0;i<n

@@ -6,13 +6,6 @@ package com.example.algorithm;
  * @Description:合并两个有序链表
  */
 public class Subject21 {
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode temp = new ListNode(0);
