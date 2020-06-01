@@ -6,6 +6,11 @@ package com.example.algorithm;
  * @Author: Cheng
  */
 public class Subject41 {
+    public static void main(String[] args) {
+        String temp = "eweq.w.eqw.jpg";
+        String []temparr = temp.split("\\.");
+        temp.substring(temp.lastIndexOf("."));
+    }
     public int firstMissingPositive(int[] nums) {
         //判断交换回来的数字
         for (int i = 0; i < nums.length; i++) {
