@@ -10,7 +10,8 @@ public class Subject69 {
         mySqrt(Integer.MAX_VALUE);
         Math.sqrt(Integer.MAX_VALUE);
     }
-    public static int mySqrt(int x) {
+
+    public static int mySqrt1(int x) {
         int left = 0, right = x;
         return dictotomy(left, right, x);
     }
@@ -28,5 +29,24 @@ public class Subject69 {
         } else {
             return dictotomy(left, temp, target);
         }
+    }
+
+    public static int mySqrt(int x) {
+        int left = 1, right = x;
+        int res = 0;
+        int mid = 0, div = 0;
+        while (left <= right) {
+            mid = left + (right - left) / 2;
+            div = x / mid;
+            if (div == mid) {
+                return div;
+            } else if (mid < div) {
+                res = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return res;
     }
 }
