@@ -9,7 +9,7 @@ import java.util.Stack;
  * @Date: 2020/5/22 23:14
  * @Description:有效的括号
  */
-public class Subject20 {
+public class Subject20_F {
 
     public static void main(String[] args) {
         System.out.println(isValid("()"));
@@ -36,5 +36,21 @@ public class Subject20 {
         } else {
             return false;
         }
+    }
+
+    public static boolean isValid2(String s) {
+        Stack<Character> stack = new Stack<>();
+        for(char c:s.toCharArray()){
+            if(c=='('){
+                stack.push(')');
+            }else if(c=='{'){
+                stack.push('}');
+            }else if(c=='['){
+                stack.push(']');
+            }else if(stack.isEmpty()||c!=stack.pop()){
+                return false;
+            }
+        }
+        return stack.isEmpty();
     }
 }
