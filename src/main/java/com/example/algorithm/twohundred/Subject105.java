@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @Date: 2020/7/13 23:24
  * @Description:从前序与中序遍历序列构造二叉树
  */
-public class Sucject105 {
+public class Subject105 {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return buildTreeHandler(preorder,inorder,0,preorder.length,0,inorder.length);
     }
