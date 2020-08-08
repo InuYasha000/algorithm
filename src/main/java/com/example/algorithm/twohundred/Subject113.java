@@ -31,7 +31,7 @@ import java.util.List;
  * ]
  *
  */
-public class Subjcet113 {
+public class Subject113 {
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
         List<List<Integer>> res = new ArrayList<>();
         if(root==null){

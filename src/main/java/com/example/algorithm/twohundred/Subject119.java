@@ -8,7 +8,7 @@ import java.util.List;
  * @Date: 2020/7/23 22:43
  * @Description:杨辉三角II
  */
-public class Subjcet119 {
+public class Subject119 {
     public List<Integer> getRow(int rowIndex) {
         List<Integer> list = new ArrayList<>();
         list.add(1);
