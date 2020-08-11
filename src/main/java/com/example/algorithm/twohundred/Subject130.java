@@ -29,6 +29,10 @@ package com.example.algorithm.twohundred;
 //从边界出发寻找任何和边界相连并且边界为'O'，用一个特殊支付表示，这些就是实际上没被围绕的,这一点不难想到
 //太笨比了，dfs判断边界我一直想的是外面判断，外面判断会导致逻辑很冗余，这个解法亮点在于放到dfs内部去判断
 public class Subject130 {
+    public static void main(String[] args) {
+        char[][] ch = new char[][]{{'X','O','X','X'}, {'O','X','O','X'},{'X','O','X','O'},{'O','X','O','X'},{'X','O','X','O'},{'O','X','O','X'}};
+        solve1(ch);
+    }
     int row,col;
     public void solve(char[][] board) {
         if(board==null||board.length==0){
@@ -65,6 +69,43 @@ public class Subject130 {
         dfs(board,rowindex+1,colindex);
         dfs(board,rowindex,colindex-1);
         dfs(board,rowindex,colindex+1);
+        return;
+    }
+
+    public static void solve1(char[][] board) {
+        if(board==null||board.length==0){
+            return ;
+        }
+        int row = board.length;
+        int col = board[0].length;
+        for(int i=0;i<row;i++){
+            solveHandler(i,0,board);
+            solveHandler(i,col-1,board);
+        }
+        for(int j=0;j<col;j++){
+            solveHandler(0,j,board);
+            solveHandler(row-1,j,board);
+        }
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(board[i][j]=='O'){
+                    board[i][j] = 'X';
+                }
+                if(board[i][j]=='-'){
+                    board[i][j] = 'O';
+                }
+            }
+        }
+    }
+    public static void solveHandler(int row,int col,char[][] board){
+        if(row<0||row>board.length-1||col<0||col>board[0].length-1||board[row][col]!='O'){
+            return;
+        }
+        board[row][col] = '-';
+        solveHandler(row-1,col,board);
+        solveHandler(row+1,col,board);
+        solveHandler(row,col-1,board);
+        solveHandler(row,col+1,board);
         return;
     }
 }
