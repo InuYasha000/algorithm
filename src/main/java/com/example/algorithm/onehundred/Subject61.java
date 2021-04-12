@@ -79,4 +79,23 @@ public class Subject61 {
         slow.next = null;
         return head;
     }
+
+    public ListNode rotateRight1(ListNode head, int k) {
+        if(head==null||k==0){
+            return head;
+        }
+        ListNode tail = head;
+        int length = 1;
+        while(tail.next!=null){
+            tail = tail.next;
+            length++;
+        }
+        tail.next = head;
+        for(int i=0;i<length-k%length-1;i++){
+            head = head.next;
+        }
+        ListNode res = head.next;
+        head.next = null;
+        return res;
+    }
 }
