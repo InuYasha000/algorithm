@@ -1,4 +1,4 @@
-package com.example.algorithm.sixhundred;
+package com.example.algorithm.eighthundred;
 
 /**
  * @Auther: cheng
