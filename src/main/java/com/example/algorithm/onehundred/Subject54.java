@@ -41,4 +41,33 @@ public class Subject54 {
         }
         return res;
     }
+
+    public List<Integer> spiralOrder1(int[][] matrix) {
+        List<Integer> res = new ArrayList<>();
+        boolean isTrue[][] = new boolean[matrix.length][matrix[0].length];
+        int r[] = new int[]{0,1,0,-1};//行转弯数组
+        int c[] = new int[]{1,0,-1,0};//列转弯数组
+        int row = 0;
+        int rowNext = 0;
+        int col = 0;
+        int colNext = 0;
+        int index = 0;
+        for(int i=0;i<matrix.length*matrix[0].length;i++){
+            res.add(matrix[row][col]);
+            isTrue[row][col] = true;
+            rowNext = row + r[index];
+            colNext = col + c[index];
+            if(rowNext>=0&&rowNext<matrix.length&&colNext>=0&&colNext<matrix[0].length&&!isTrue[rowNext][colNext]){
+                row = rowNext;
+                col = colNext;
+            }else{
+                //转弯
+                index++;
+                index = index%4;
+                row += r[index];
+                col += c[index];
+            }
+        }
+        return res;
+    }
 }

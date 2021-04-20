@@ -24,4 +24,22 @@ public class Subject11 {
         }
         return max;
     }
+
+    public int maxArea1(int[] height) {
+        int start = 0;
+        int end = height.length-1;
+        int max = Math.min(height[start],height[end])*(end-start);
+        while(start<end){
+            if(height[start]<height[end]){
+                start++;
+            }else if(height[start]>height[end]){
+                end--;
+            }else{
+                start++;
+                end--;
+            }
+            max = Math.max(max,Math.min(height[start],height[end])*(end-start));
+        }
+        return max;
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.algorithm.onehundred;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @Auther: cheng
@@ -13,7 +15,8 @@ import java.util.HashMap;
  */
 public class Subject3 {
     public static void main(String[] args) {
-        lengthOfLongestSubstring("abcabcbb");
+//        lengthOfLongestSubstring("abcabcbb");
+        lengthOfLongestSubstring1(" ");
     }
 
     public static int lengthOfLongestSubstring(String s) {
@@ -33,5 +36,29 @@ public class Subject3 {
         }
         System.out.println(max);
         return max;
+    }
+
+    public static int lengthOfLongestSubstring1(String s) {
+        if(s==null||s.length()==0){
+            return 0;
+        }
+        if(s==" "){
+            return 1;
+        }
+        Set<Character> set= new HashSet<>();
+        int start = 0;
+        int end = 0;
+        char[] ch = s.toCharArray();
+        int res = 0;
+        for(int i=0;i<ch.length;i++){
+            if(set.contains(ch[i])){
+                res = Math.max((end-start),res);
+                start = end;
+                set.clear();
+            }
+            end++;
+            set.add(ch[i]);
+        }
+        return res;
     }
 }

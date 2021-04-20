@@ -25,4 +25,26 @@ public class Subject14 {
         }
         return strs[0];
     }
+
+    public String longestCommonPrefix2(String[] strs) {
+        if(strs.length==0){
+            return "";
+        }
+        boolean flag = true;
+        StringBuilder res = new StringBuilder("");
+        for(int i=0;i<strs[0].length();i++){
+            for(int j=1;j<strs.length;j++){
+                if(!(strs[j].length()>i&&strs[j].charAt(i)==strs[0].charAt(i))){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                res.append(strs[0].charAt(i));
+            }else{
+                break;
+            }
+        }
+        return res.toString();
+    }
 }

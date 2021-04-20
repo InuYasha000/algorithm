@@ -10,13 +10,13 @@ import java.util.*;
  * @Author: Cheng
  */
 public class Subject15 {
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
 //        int nums[] = new int[]{-1,-1,0,1,2};
         int nums[] = new int[]{0, 0, 0, 2, 2};
 //        int nums[] = new int[]{0,0,0,0};
         result = threeSum2(nums);
         System.out.println(result);
-    }
+    }*/
 
     public static List<List<Integer>> threeSum2(int[] num) {
         Arrays.sort(num); //排序
@@ -79,5 +79,31 @@ public class Subject15 {
             }
             map.put(i, nums[i]);
         }
+    }
+
+    public static void main(String[] args) {
+        int nums[] = new int[]{-1,0,1,2,-1,-4};
+        threeSum1(nums);
+    }
+
+
+    public static List<List<Integer>> threeSum1(int[] nums) {
+        Map<Integer,List<Integer>> map1 = new HashMap<>();
+        Map<Integer,Integer> map2 = new HashMap<>();
+        List<List<Integer>> res = new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            for(int j=i;j<nums.length;j++){
+                map1.put(nums[i]+nums[j],Arrays.asList(nums[i],nums[j]));
+                map2.put(nums[i]+nums[j],i);
+            }
+        }
+        for(int i=0;i<nums.length;i++){
+            if(map1.containsKey(0-nums[i])&&map2.get(nums[i])>i){
+                List<Integer> list = map1.get(0-nums[i]);
+                list.add((Integer)nums[i]);
+                res.add(list);
+            }
+        }
+        return res;
     }
 }

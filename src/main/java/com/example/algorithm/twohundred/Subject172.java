@@ -20,6 +20,7 @@ package com.example.algorithm.twohundred;
  *
  */
 public class Subject172 {
+    //有多少5的乘法因子
     public int trailingZeroes(int n) {
         int res = 0;
         while(n>0){

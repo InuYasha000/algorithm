@@ -49,4 +49,30 @@ public class Subject43 {
         }
         return sb.toString();
     }
+
+    public String multiply1(String num1, String num2) {
+        char ch1[] = num1.toCharArray();
+        char ch2[] = num2.toCharArray();
+        //这里是两个length相加就行了
+        int[] sums = new int[ch1.length+ch2.length];
+        int temp = 0;
+        for(int i=ch1.length-1;i>=0;i--){
+            for(int j=ch2.length-1;j>=0;j--){
+                //sums最后一位填满
+                temp = (ch1[i]-'0')*(ch2[j]-'0')+sums[i+j+1];
+                sums[i+j+1] = temp%10;
+                sums[i+j] += temp/10;
+            }
+        }
+        int start = 0;
+        //小于length-1是因为有个0存在
+        while(start<sums.length-1&&sums[start]==0){
+            start++;
+        }
+        StringBuilder sb = new StringBuilder();
+        for(;start<sums.length;start++){
+            sb.append(sums[start]);
+        }
+        return sb.toString();
+    }
 }

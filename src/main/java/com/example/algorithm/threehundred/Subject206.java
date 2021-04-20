@@ -2,6 +2,8 @@ package com.example.algorithm.threehundred;
 
 import com.example.algorithm.common.ListNode;
 
+import java.util.HashSet;
+
 /**
  * @Auther: cheng
  * @Date: 2020/8/11 20:37
@@ -27,5 +29,22 @@ public class Subject206 {
             temp = node;
         }
         return res;
+    }
+
+    public ListNode reverseList1(ListNode head) {
+        if(head==null){
+            return head;
+        }
+        ListNode pre = new ListNode(0);
+        pre.next = head;
+        ListNode cur = head;
+        ListNode next = cur.next;
+        while(next!=null){
+            cur.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
+            next = cur.next;
+        }
+        return pre.next;
     }
 }
