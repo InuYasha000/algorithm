@@ -57,4 +57,49 @@ public class Subject23OO {
         }
         return result.next;
     }
+
+    public ListNode mergeKLists1(ListNode[] lists) {
+        if(lists.length==0){
+            return null;
+        }else if(lists.length==1){
+            return lists[0];
+        }else if(lists.length==2){
+            return merge2Lists1(lists[0],lists[1]);
+        }
+        int mid = lists.length/2;
+        ListNode lists1[] = new ListNode[mid];
+        ListNode lists2[] = new ListNode[lists.length-mid];
+        for(int i=0;i<mid;i++){
+            lists1[i] = lists[i];
+        }
+        for(int i=mid,j=0;i<lists.length;i++,j++){
+            lists2[j] = lists[i];
+        }
+        return merge2Lists1(mergeKLists(lists1),mergeKLists(lists2));
+    }
+    public ListNode merge2Lists1(ListNode l1,ListNode l2){
+        ListNode head = new ListNode();
+        ListNode res = head;
+        while(l1!=null&&l2!=null){
+            if(l1.val<l2.val){
+                head.next = l1;
+                l1 = l1.next;
+            }else{
+                head.next = l2;
+                l2 = l2.next;
+            }
+            head = head.next;
+        }
+        while(l1!=null){
+            head.next = l1;
+            l1 = l1.next;
+            head = head.next;
+        }
+        while(l2!=null){
+            head.next = l2;
+            l2 = l2.next;
+            head = head.next;
+        }
+        return res.next;
+    }
 }
