@@ -34,4 +34,25 @@ public class Subject22 {
             sb.deleteCharAt(sb.length() - 1);
         }
     }
+
+
+    class Solution {
+        List<String> res = new ArrayList<>();
+        public List<String> generateParenthesis(int n) {
+            generateParenthesisHelper(n,n,"");
+            return res;
+        }
+        public void generateParenthesisHelper(int left,int right,String str){
+            if(left==0&&right==0){
+                res.add(str);
+                return;
+            }
+            if(left>0){
+                generateParenthesisHelper(left-1,right,str+"(");
+            }
+            if(right>left){
+                generateParenthesisHelper(left,right-1,str+")");
+            }
+        }
+    }
 }

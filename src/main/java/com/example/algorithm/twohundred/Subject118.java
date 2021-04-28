@@ -45,4 +45,20 @@ public class Subject118 {
         }
         return res;
     }
+
+    public List<List<Integer>> generate1(int numRows) {
+        List<List<Integer>> res = new ArrayList<>();
+        for(int i=1;i<=numRows;i++){
+            List<Integer> list = new ArrayList<>();
+            list.add(1);
+            for(int j=2;j<=i-1;j++){
+                list.add(res.get(i-2).get(j-2)+res.get(i-2).get(j-1));
+            }
+            if(i!=1){
+                list.add(1);
+            }
+            res.add(list);
+        }
+        return res;
+    }
 }

@@ -76,4 +76,28 @@ public class Subject5 {
         }
         return s.substring(end + 1 - maxlen, end + 1);
     }
+
+    public String longestPalindrome1(String s) {
+        char[] ch = s.toCharArray();
+        int maxLen = 0;
+        int end = 0;
+        int start = 0;
+        for(int i=0;i<s.length();i++){
+            int len1 = longestPalindromeHelper(ch,i,i);
+            int len2 = longestPalindromeHelper(ch,i,i+1);
+            maxLen = Math.max(len1,len2);
+            if(maxLen>end-start+1){
+                start = i-(maxLen-1)/2;
+                end = i+maxLen/2;
+            }
+        }
+        return s.substring(start,end+1);
+    }
+    public int longestPalindromeHelper(char[] ch,int start,int end){
+        while(start>=0&&end<ch.length&&ch[start]==ch[end]){
+            start--;
+            end++;
+        }
+        return end-start-1;
+    }
 }

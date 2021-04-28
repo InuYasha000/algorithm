@@ -33,4 +33,19 @@ public class Subject70 {
         }
         return climbCursion(n - 1) + climbCursion(n - 2);
     }
+
+    //动态规划
+    public int climbStairs1(int n) {
+        int dp[] = new int[n];
+        for(int i=n-1;i>=0;i--){
+            if(i==n-1){
+                dp[i] = 1;
+            }else if(i==n-2){
+                dp[i] = 2;
+            }else{
+                dp[i] = dp[i+1]+dp[i+2];
+            }
+        }
+        return dp[0];
+    }
 }
