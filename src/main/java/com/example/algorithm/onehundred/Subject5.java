@@ -7,7 +7,8 @@ package com.example.algorithm.onehundred;
  */
 public class Subject5 {
     public static void main(String[] args) {
-
+//        longestPalindrome3("babad");
+        longestPalindrome3("a");
     }
 
     //找对角线，两个字符串的最大公共子序列也是
@@ -99,5 +100,50 @@ public class Subject5 {
             end++;
         }
         return end-start-1;
+    }
+
+    public static String longestPalindrome3(String s) {
+        int i = 0;
+        String res = "";
+        int max = 0;
+        int left = 0;
+        int right = 0;
+        while(i<s.length()){
+            left = i;
+            right = i;
+            //单点扩散
+            while(left>=0&&right<s.length()){
+                if(s.charAt(left)==s.charAt(right)){
+                    if(max<right-left+1){
+                        max = right-left+1;
+                        res = s.substring(left,right+1);
+                    }
+                    left--;
+                    right++;
+                }else{
+                    break;
+                }
+            }
+            left = i;
+            right = i;
+            //双点扩散
+            if(i+1<s.length()&&s.charAt(i)==s.charAt(i+1)){
+                right = i+1;
+                while(left>=0&&right<s.length()){
+                    if(s.charAt(left)==s.charAt(right)){
+                        if(max<right-left+1){
+                            max = right-left+1;
+                            res = s.substring(left,right+1);
+                        }
+                        left--;
+                        right++;
+                    }else{
+                        break;
+                    }
+                }
+            }
+            i++;
+        }
+        return res;
     }
 }
